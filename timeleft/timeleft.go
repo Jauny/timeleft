@@ -14,6 +14,7 @@ func Countdown(d string) (time.Duration, error) {
 	var left time.Duration
 
 	then, err := time.Parse(dateLayout, d)
+	fmt.Println("then", then)
 	if err != nil {
 		return left, err
 	}

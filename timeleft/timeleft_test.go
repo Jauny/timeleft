@@ -6,9 +6,19 @@ import (
 )
 
 func TestCountdown(t *testing.T) {
-	_, err := Countdown("2018-02-17")
+	date := time.Now().Add(time.Hour * 50)
+	dateString := date.String()[:10]
+	dateParsed, _ := time.Parse("2006-01-02", dateString)
+	expectedResult := dateParsed.Sub(time.Now())
+
+	result, err := Countdown(dateString)
 	if err != nil {
-		t.Errorf("Failed with unknown error.")
+		t.Errorf("Failed %v.", err)
+		return
+	}
+
+	if (result / time.Second) != (expectedResult / time.Second) {
+		t.Errorf("Failed with result %v. Expected %v", result, expectedResult)
 	}
 }
 
