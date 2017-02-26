@@ -11,7 +11,7 @@ var dateUntil string
 
 func initDate() {
 	const (
-		defaultDate = "2018-02-17"
+		defaultDate = "2060-01-01"
 		usage       = "The date to countdown to"
 	)
 	flag.StringVar(&dateUntil, "date", defaultDate, usage)
@@ -33,7 +33,7 @@ func do() error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(left)
+	fmt.Println(timeleft.FormatDuration(left))
 
 	return nil
 }
